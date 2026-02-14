@@ -1,4 +1,5 @@
 let express = require("express");
+let {dbConnect} = require('../FullStack/src/controller/dbController')
 let app = express();
 let port = 9801;
 
@@ -11,6 +12,7 @@ app.get('/', (req,res) => {
 })
 
 app.listen(port, (err) => {
+    dbConnect()
     if(err) throw err;
     console.log("Server is running on port "+ port)
 })
