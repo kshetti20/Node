@@ -1,5 +1,5 @@
 let express = require('express')
-let categoryRouter = express()
+let categoryRouter = express.Router()
 let {getData} = require('./dbController')
 
 function router(menu) {
@@ -7,9 +7,10 @@ function router(menu) {
         .get(async (req,res) => {
         let query = {};
         let data = await getData('category',query)
-        console.log("data===", data)
+       
+        res.render('category',{title:'Category Page',category:data,menu})
     })
-
+    
     return categoryRouter;
 }
 
